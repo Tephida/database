@@ -1,17 +1,15 @@
-# Sura Database
-==============
+# Tephida Database
 
-[![Downloads this Month](https://img.shields.io/packagist/dm/sura/database.svg)](https://packagist.org/packages/sura/database)
-[![Latest Stable Version](https://poser.pugx.org/sura/database/v/stable)](https://github.com/sura/database/releases)
-[![License](https://poser.pugx.org/sura/database/license)](https://github.com/sura/database/blob/master/license.md)
+[![Downloads this Month](https://img.shields.io/packagist/dm/tephida/database.svg)](https://packagist.org/packages/tephida/database)
+[![Latest Stable Version](https://poser.pugx.org/tephida/database/v/stable)](https://github.com/tephida/database/releases)
+[![License](https://poser.pugx.org/tephida/database/license)](https://github.com/tephida/database/blob/master/license.md)
 
-Installation
-------------
+## Installation
 
 The recommended way to install is via Composer:
 
 ```
-composer require sura/database
+composer require tephida/database
 ```
 
 It requires supports PHP up to 8.0.
