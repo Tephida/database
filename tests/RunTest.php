@@ -50,7 +50,7 @@ class RunTest extends ColTest
      */
     public function testMethod(callable $cb, $statement, $offset, $params, $expectedResult)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         $results = $this->getResultForMethod($db, $statement, $offset, $params);
 

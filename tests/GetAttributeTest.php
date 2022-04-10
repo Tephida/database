@@ -65,7 +65,7 @@ class GetAttributeTest extends DatabaseTest
      */
     public function testAttribute(callable $cb, $attr, string $attrName)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         try {
             $this->assertSame(
                 $db->getAttribute($attr),

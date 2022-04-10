@@ -21,7 +21,7 @@ class SetAttributeTest extends GetAttributeTest
      */
     public function testAttribute(callable $cb, $attr, string $attrName)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $skipping = [
             'ATTR_STATEMENT_CLASS'
         ];
@@ -182,7 +182,7 @@ class SetAttributeTest extends GetAttributeTest
         string $exceptionClassName,
         string $exceptionMessage
     ) {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException($exceptionClassName);
         $this->expectExceptionMessage($exceptionMessage);
 

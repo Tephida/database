@@ -15,7 +15,7 @@ class InsertManyTest extends DatabaseWriteTest
      */
     public function testInsertManyNoFieldsThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $this->assertFalse($db->insertMany('irrelevant_but_valid_tablename', []));
     }
@@ -26,7 +26,7 @@ class InsertManyTest extends DatabaseWriteTest
      */
     public function testInsertManyNoFieldsThrowsPdoException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(PDOException::class);
         $db->insertMany('irrelevant_but_valid_tablename', [[], [1]]);
     }
@@ -37,7 +37,7 @@ class InsertManyTest extends DatabaseWriteTest
      */
     public function testInsertManyArgTableThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertMany('', [['foo' => 1], ['foo' => 2]]);
     }
@@ -48,7 +48,7 @@ class InsertManyTest extends DatabaseWriteTest
      */
     public function testInsertManyArgMapKeysThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertMany('irrelevant_but_valid_tablename', [['1foo' => 1]]);
     }
@@ -59,7 +59,7 @@ class InsertManyTest extends DatabaseWriteTest
      */
     public function testInsertManyArgMapIs1DArrayThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertMany('irrelevant_but_valid_tablename', [['foo' => [1]]]);
     }
@@ -70,7 +70,7 @@ class InsertManyTest extends DatabaseWriteTest
      */
     public function testInsertMany(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->insertMany('irrelevant_but_valid_tablename', [['foo' => '1'], ['foo' => '2']]);
         $this->assertEquals(
             $db->single('SELECT COUNT(*) FROM irrelevant_but_valid_tablename'),

@@ -15,7 +15,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testInsertNoFieldsThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(PDOException::class);
         $this->assertNull($db->insert('irrelevant_but_valid_tablename', []));
     }
@@ -26,7 +26,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testInsertTableNameThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insert('', ['foo' => 1]);
     }
@@ -37,7 +37,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testInsertMapArgThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insert('irrelevant_but_valid_tablename', [[1]]);
     }
@@ -48,7 +48,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testInsertMapArgKeysThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insert('irrelevant_but_valid_tablename', ['1foo' => 1]);
     }
@@ -59,7 +59,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testInsertIncorrectFieldThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(PDOException::class);
         $db->insert('irrelevant_but_valid_tablename', ['bar' => 1]);
     }
@@ -70,7 +70,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testInsert(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->insert('irrelevant_but_valid_tablename', ['foo' => 1]);
         $this->assertEquals(
             $db->single('SELECT COUNT(foo) FROM irrelevant_but_valid_tablename WHERE foo = ?', [1]),
@@ -89,7 +89,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testBuildeInsertSql(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $statement = $db->buildInsertQuery('test_table', ['id', 'col1', 'col2']);
         $expected = '/insert into .test_table. \(.id., .col1., .col2.\) VALUES \(\?, \?, \?\)/i';
         $this->assertDatabaseRegExp($expected, $statement);
@@ -100,7 +100,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testBuildInsertIgnoreSql(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         list($query) = $db->buildInsertQueryBoolSafe(
             'test_table',
@@ -121,7 +121,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testBuildInsertOnDuplicateKeyUpdate(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         list($query) = $db->buildInsertQueryBoolSafe(
             'test_table',
@@ -144,7 +144,7 @@ class InsertTest extends DatabaseWriteTest
      */
     public function testBuildInsertOnDuplicateKeyUpdateMultiple(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         list($query) = $db->buildInsertQueryBoolSafe(
             'test_table',
@@ -160,7 +160,8 @@ class InsertTest extends DatabaseWriteTest
         );
 
         $this->assertDatabaseRegExp(
-            '/insert into .test_table. \(.foo., .bar., .baz.\) VALUES \(\?, \?, \?\) ON DUPLICATE KEY UPDATE .bar. = VALUES\(.bar.\), .baz. = VALUES\(.baz.\)/i',
+            '/insert into .test_table. \(.foo., .bar., .baz.\) VALUES \(\?, \?, \?\) 
+ON DUPLICATE KEY UPDATE .bar. = VALUES\(.bar.\), .baz. = VALUES\(.baz.\)/i',
             $query
         );
     }

@@ -16,7 +16,7 @@ class ErrorCodeTest extends DatabaseTest
      */
     public function testNoError(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         $this->assertSame($db->errorCode(), '00000');
     }

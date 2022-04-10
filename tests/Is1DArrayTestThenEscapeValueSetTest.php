@@ -224,7 +224,7 @@ class EscapeValueSetTest extends DatabaseTest
      */
     public function testEscapeValueSetFailsIs1DArray(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->escapeValueSet([[1]]);
     }
@@ -239,7 +239,7 @@ class EscapeValueSetTest extends DatabaseTest
      */
     public function testEscapeValueSetThrowsException(callable $cb, array $escapeThis, string $escapeThatAsType)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->escapeValueSet($escapeThis, $escapeThatAsType);
     }
@@ -260,7 +260,7 @@ class EscapeValueSetTest extends DatabaseTest
         string $escapeThatAsType,
         array $expectOneOfThese
     ) {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         $this->assertTrue(count($expectOneOfThese) > 0);
 

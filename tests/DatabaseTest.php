@@ -92,7 +92,7 @@ abstract class DatabaseTest extends PHPUnit_Framework_TestCase
     * @param callable $cb
     * @return Database
     */
-    protected function DatabaseExpectedFromCallable(callable $cb) : Database
+    protected function databaseExpectedFromCallable(callable $cb) : Database
     {
         return $cb();
     }
