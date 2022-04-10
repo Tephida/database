@@ -129,7 +129,7 @@ class EscapeIdentifierTest extends DatabaseTest
      */
     public function testEscapeIdentifier(callable $cb, $identifier, array $withAllowSeparators)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->setAllowSeparators(false); // resetting to default
         foreach ($withAllowSeparators as $allowSeparators) {
             $db->setAllowSeparators($allowSeparators);
@@ -153,7 +153,7 @@ class EscapeIdentifierTest extends DatabaseTest
      */
     public function testEscapeIdentifierThrowsSomething(callable $cb, $identifier)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $thrown = false;
         try {
             $db->escapeIdentifier($identifier);

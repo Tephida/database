@@ -20,7 +20,7 @@ class QuoteThenExecTest extends DatabaseWriteTest
      */
     public function testExec(callable $cb, array $maps)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $table = 'irrelevant_but_valid_tablename';
 
         $first = $maps[0];

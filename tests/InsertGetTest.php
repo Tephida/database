@@ -14,7 +14,7 @@ class InsertGetTest extends InsertTest
      */
     public function testInsertGetTableNameThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertGet('', ['foo' => 1], 'foo');
     }
@@ -25,7 +25,7 @@ class InsertGetTest extends InsertTest
      */
     public function testInsertGetMapArgThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertGet('irrelevant_but_valid_tablename', [[1]], 'foo');
     }
@@ -36,7 +36,7 @@ class InsertGetTest extends InsertTest
      */
     public function testInsertGetMapArgKeysThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertGet('irrelevant_but_valid_tablename', ['1foo' => 1], '1foo');
     }
@@ -47,7 +47,7 @@ class InsertGetTest extends InsertTest
      */
     public function testInsertGet(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->assertEquals(
             $db->insertGet('irrelevant_but_valid_tablename', ['foo' => 'bar'], 'bar'),
             'bar'
@@ -59,7 +59,7 @@ class InsertGetTest extends InsertTest
      */
     public function testInsertGetException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(\Exception::class);
         $this->assertEquals(
             $db->insertGet('irrelevant_but_valid_tablename', [], 'bar'),

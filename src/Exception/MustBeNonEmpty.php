@@ -29,7 +29,5 @@ soft-fail to an empty set, simply call setEmptyInStatementsAllowed(), like so:
 Note that an empty IN statement yields an empty result. If you want it to fail
 open (a.k.a. discard the IN() statement entirely), you'll need to implement
 your own application logic to handle this behavior.";
-
-
     }
 }

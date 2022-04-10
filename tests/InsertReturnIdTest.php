@@ -14,7 +14,7 @@ class InsertReturnIdTest extends InsertTest
      */
     public function testInsertReturnIdTableNameThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertReturnId('', ['foo' => 1], 'foo');
     }
@@ -25,7 +25,7 @@ class InsertReturnIdTest extends InsertTest
      */
     public function testInsertReturnIdMapArgThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertReturnId('irrelevant_but_valid_tablename', [[1]], 'foo');
     }
@@ -36,7 +36,7 @@ class InsertReturnIdTest extends InsertTest
      */
     public function testInsertReturnIdMapArgKeysThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->insertReturnId('irrelevant_but_valid_tablename', ['1foo' => 1], '1foo');
     }
@@ -47,7 +47,7 @@ class InsertReturnIdTest extends InsertTest
      */
     public function testInsertReturnId(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->assertEquals(
             $db->insertReturnId('irrelevant_but_valid_tablename', ['foo' => 'bar']),
             '1'
@@ -63,7 +63,7 @@ class InsertReturnIdTest extends InsertTest
      */
     public function testInsertReturnIdException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(\Exception::class);
         $this->assertEquals(
             $db->insertReturnId('irrelevant_but_valid_tablename', [], 'bar'),

@@ -15,7 +15,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateArgChangesReturnsNull(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->assertEquals(
             $db->update('irrelevant_but_valid_tablename', [], ['1=1']),
             null
@@ -28,7 +28,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateArgConditionsReturnsNull(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->assertEquals(
             $db->update('irrelevant_but_valid_tablename', ['foo' => 'bar'], []),
             null
@@ -41,7 +41,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateArgChangesThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->update('irrelevant_but_valid_tablename', [[1]], ['TRUE' => true]);
     }
@@ -52,7 +52,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateArgConditionsThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->update('irrelevant_but_valid_tablename', ['1=1'], [[1]]);
     }
@@ -63,7 +63,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateTableNameThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->update('', ['foo' => 'bar'], ['TRUE' => true]);
     }
@@ -74,7 +74,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateArgChangesKeyThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->update('irrelevant_but_valid_tablename', ['1foo' => 1], ['TRUE' => true]);
     }
@@ -85,7 +85,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateArgConditionsKeyThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->update('irrelevant_but_valid_tablename', ['foo' => 1], ['1foo' => true]);
     }
@@ -97,7 +97,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdateEasyStatement(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->insertMany('irrelevant_but_valid_tablename', [['foo' => '1'], ['foo' => '2']]);
         $this->assertEquals(
             $db->single('SELECT COUNT(*) FROM irrelevant_but_valid_tablename'),
@@ -134,7 +134,7 @@ class UpdateTest extends DatabaseWriteTest
      */
     public function testUpdate(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->insertMany('irrelevant_but_valid_tablename', [['foo' => '1'], ['foo' => '2']]);
         $this->assertEquals(
             $db->single('SELECT COUNT(*) FROM irrelevant_but_valid_tablename'),

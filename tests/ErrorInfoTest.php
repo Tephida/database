@@ -16,7 +16,7 @@ class ErrorInfoTest extends DatabaseTest
      */
     public function testNoError(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         $info = $db->errorInfo();
         $this->assertTrue(is_array($info));

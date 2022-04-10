@@ -20,7 +20,7 @@ class QuoteTest extends DatabaseTest
      */
     public function testQuote(callable $cb, $quoteThis, array $expectOneOfThese)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
 
         $this->assertTrue(count($expectOneOfThese) > 0);
 

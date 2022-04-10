@@ -27,7 +27,7 @@ class SingleTestThenExistsTest extends DatabaseWriteTest
      */
     public function testExists(callable $cb, array $insertMany)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->assertFalse(
             $db->exists('SELECT COUNT(*) FROM irrelevant_but_valid_tablename')
         );

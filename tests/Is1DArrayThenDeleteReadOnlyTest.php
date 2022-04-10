@@ -15,7 +15,7 @@ class Is1DArrayThenDeleteReadOnlyTest extends DatabaseTest
      */
     public function testDeleteThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->delete('irrelevant_but_valid_tablename', [[1]]);
     }
@@ -26,7 +26,7 @@ class Is1DArrayThenDeleteReadOnlyTest extends DatabaseTest
      */
     public function testDeleteTableNameEmptyThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->delete('', ['foo' => 'bar']);
     }
@@ -37,7 +37,7 @@ class Is1DArrayThenDeleteReadOnlyTest extends DatabaseTest
      */
     public function testDeleteTableNameInvalidThrowsException(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->expectException(InvalidArgumentException::class);
         $db->delete('1foo', ['foo' => 'bar']);
     }
@@ -48,7 +48,7 @@ class Is1DArrayThenDeleteReadOnlyTest extends DatabaseTest
      */
     public function testDeleteConditionsReturnsNull(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $this->assertEquals(
             $db->delete('irrelevant_but_valid_tablename', []),
             null

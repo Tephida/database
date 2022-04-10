@@ -19,7 +19,7 @@ class SingleTestIs1DArrayThenDeleteReadOnlyTestThenDeleteWriteTest extends Datab
      */
     public function testDelete(callable $cb, array $insertMany)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->insertMany('irrelevant_but_valid_tablename', $insertMany);
         $insertManyTotal = count($insertMany);
         $this->assertEquals(

@@ -17,7 +17,7 @@ class InsertManyFlatTransactionTest extends DatabaseWriteTest
      */
     public function testInsertMany(callable $cb)
     {
-        $db = $this->DatabaseExpectedFromCallable($cb);
+        $db = $this->databaseExpectedFromCallable($cb);
         $db->insertMany('irrelevant_but_valid_tablename', [['foo' => '1'], ['foo' => '2']]);
         $expectedCount = $db->tryFlatTransaction(function (Database $db) : int {
             return (int) $db->single('SELECT COUNT(*) FROM irrelevant_but_valid_tablename');
