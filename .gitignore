@@ -1,11 +1,4 @@
-/vendor
-/public/uploads/ads
-/public/uploads/apps
-/public/uploads/attah
-/public/uploads/users
-/public/uploads/videos
 /.idea
-.env
-.phpunit.result.cache
-composer.lock
-composer.phar
+/vendor/
+/composer.lock
+/.editorconfig
