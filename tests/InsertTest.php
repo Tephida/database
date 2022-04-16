@@ -102,7 +102,7 @@ class InsertTest extends DatabaseWriteTest
     {
         $db = $this->databaseExpectedFromCallable($cb);
 
-        list($query) = $db->buildInsertQueryBoolSafe(
+        [$query] = $db->buildInsertQueryBoolSafe(
             'test_table',
             [
                 'foo' => 'bar',
@@ -123,7 +123,7 @@ class InsertTest extends DatabaseWriteTest
     {
         $db = $this->databaseExpectedFromCallable($cb);
 
-        list($query) = $db->buildInsertQueryBoolSafe(
+        [$query] = $db->buildInsertQueryBoolSafe(
             'test_table',
             [
                 'foo' => 'bar',
@@ -146,7 +146,7 @@ class InsertTest extends DatabaseWriteTest
     {
         $db = $this->databaseExpectedFromCallable($cb);
 
-        list($query) = $db->buildInsertQueryBoolSafe(
+        [$query] = $db->buildInsertQueryBoolSafe(
             'test_table',
             [
                 'foo' => 'bar',
